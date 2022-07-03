@@ -1,0 +1,344 @@
+[
+    {
+        "id": "f954bf638ed6454c",
+        "type": "http request",
+        "z": "bfdd5adf60bd3f54",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "",
+        "persist": false,
+        "authType": "",
+        "senderr": false,
+        "x": 270,
+        "y": 180,
+        "wires": [
+            [
+                "19013de67357ee10",
+                "0d148c123b0a7e0b",
+                "bc2f9a3c993ad5f9",
+                "85dc0eb767d14239"
+            ]
+        ]
+    },
+    {
+        "id": "cead9dd285ab13ed",
+        "type": "inject",
+        "z": "bfdd5adf60bd3f54",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 180,
+        "wires": [
+            [
+                "f954bf638ed6454c",
+                "08b254566fa890a4"
+            ]
+        ]
+    },
+    {
+        "id": "e69b50c85c82175d",
+        "type": "ui_gauge",
+        "z": "bfdd5adf60bd3f54",
+        "name": "",
+        "group": "4155abb4db814fba",
+        "order": 5,
+        "width": 7,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Température radiateur",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 620,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "fe386e130c37503e",
+        "type": "ui_gauge",
+        "z": "bfdd5adf60bd3f54",
+        "name": "",
+        "group": "4155abb4db814fba",
+        "order": 27,
+        "width": 7,
+        "height": 6,
+        "gtype": "gage",
+        "title": "GridPower",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 590,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "2b8e8c924dcdd62a",
+        "type": "ui_gauge",
+        "z": "bfdd5adf60bd3f54",
+        "name": "",
+        "group": "4155abb4db814fba",
+        "order": 23,
+        "width": 8,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Tension batterie",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 600,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ae09078628ed38c4",
+        "type": "ui_gauge",
+        "z": "bfdd5adf60bd3f54",
+        "name": "",
+        "group": "4155abb4db814fba",
+        "order": 25,
+        "width": 7,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Battery power",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 10,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 600,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "19013de67357ee10",
+        "type": "function",
+        "z": "bfdd5adf60bd3f54",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 180,
+        "wires": [
+            [
+                "e69b50c85c82175d"
+            ]
+        ]
+    },
+    {
+        "id": "0d148c123b0a7e0b",
+        "type": "function",
+        "z": "bfdd5adf60bd3f54",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 240,
+        "wires": [
+            [
+                "fe386e130c37503e"
+            ]
+        ]
+    },
+    {
+        "id": "bc2f9a3c993ad5f9",
+        "type": "function",
+        "z": "bfdd5adf60bd3f54",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 300,
+        "wires": [
+            [
+                "2b8e8c924dcdd62a"
+            ]
+        ]
+    },
+    {
+        "id": "85dc0eb767d14239",
+        "type": "function",
+        "z": "bfdd5adf60bd3f54",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 360,
+        "wires": [
+            [
+                "ae09078628ed38c4"
+            ]
+        ]
+    },
+    {
+        "id": "08b254566fa890a4",
+        "type": "http request",
+        "z": "bfdd5adf60bd3f54",
+        "name": "WeatherMap",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://api.openweathermap.org/data/2.5/forecast?q=Nancy&appid=128e8eb473c257327c69a020d37c0fa9&units=metric",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 290,
+        "y": 520,
+        "wires": [
+            [
+                "b03f934ffe961d37"
+            ]
+        ]
+    },
+    {
+        "id": "8f82fab2f9ecb84e",
+        "type": "debug",
+        "z": "bfdd5adf60bd3f54",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "b03f934ffe961d37",
+        "type": "function",
+        "z": "bfdd5adf60bd3f54",
+        "name": "",
+        "func": "var result=msg.payload.list[0].main.temp;\n\nmsg.payload=result;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 520,
+        "wires": [
+            [
+                "8f82fab2f9ecb84e",
+                "3f445b1c4dc79fcf"
+            ]
+        ]
+    },
+    {
+        "id": "3f445b1c4dc79fcf",
+        "type": "ui_gauge",
+        "z": "bfdd5adf60bd3f54",
+        "name": "",
+        "group": "4155abb4db814fba",
+        "order": 3,
+        "width": 7,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Température extérieur",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 640,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "4155abb4db814fba",
+        "type": "ui_group",
+        "name": "Radiateur AIP",
+        "tab": "b747e4c832392158",
+        "order": 2,
+        "disp": true,
+        "width": 26,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b747e4c832392158",
+        "type": "ui_tab",
+        "name": "Smart Heater",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

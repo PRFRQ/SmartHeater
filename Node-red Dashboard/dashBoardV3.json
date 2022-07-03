@@ -1,0 +1,367 @@
+[
+    {
+        "id": "f954bf638ed6454c",
+        "type": "http request",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://www.google.fr/",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 570,
+        "y": 240,
+        "wires": [
+            [
+                "19013de67357ee10",
+                "0d148c123b0a7e0b",
+                "bc2f9a3c993ad5f9",
+                "85dc0eb767d14239"
+            ]
+        ]
+    },
+    {
+        "id": "cead9dd285ab13ed",
+        "type": "inject",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 350,
+        "y": 240,
+        "wires": [
+            [
+                "f954bf638ed6454c",
+                "08b254566fa890a4",
+                "375bdde0d37f522f"
+            ]
+        ]
+    },
+    {
+        "id": "19013de67357ee10",
+        "type": "function",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "func": "msg.payload=Math.round(Math.random()*50);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 240,
+        "wires": [
+            [
+                "e69b50c85c82175d"
+            ]
+        ]
+    },
+    {
+        "id": "0d148c123b0a7e0b",
+        "type": "function",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "func": "msg.payload=Math.round(Math.random()*100);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 300,
+        "wires": [
+            [
+                "fe386e130c37503e"
+            ]
+        ]
+    },
+    {
+        "id": "bc2f9a3c993ad5f9",
+        "type": "function",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "func": "msg.payload=Math.round(Math.random()*50);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 360,
+        "wires": [
+            [
+                "2b8e8c924dcdd62a"
+            ]
+        ]
+    },
+    {
+        "id": "85dc0eb767d14239",
+        "type": "function",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "func": "msg.payload=Math.round(Math.random()*50);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 420,
+        "wires": [
+            [
+                "ae09078628ed38c4",
+                "375bdde0d37f522f"
+            ]
+        ]
+    },
+    {
+        "id": "08b254566fa890a4",
+        "type": "http request",
+        "z": "5dd65b92bb6f40a9",
+        "name": "WeatherMap",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://api.openweathermap.org/data/2.5/forecast?q=Nancy&appid=128e8eb473c257327c69a020d37c0fa9&units=metric",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 570,
+        "y": 500,
+        "wires": [
+            [
+                "b03f934ffe961d37"
+            ]
+        ]
+    },
+    {
+        "id": "b03f934ffe961d37",
+        "type": "function",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "func": "var result=msg.payload.list[0].main.temp;\n\nmsg.payload=result;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 500,
+        "wires": [
+            [
+                "3f445b1c4dc79fcf"
+            ]
+        ]
+    },
+    {
+        "id": "e69b50c85c82175d",
+        "type": "ui_gauge",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "group": "4155abb4db814fba",
+        "order": 7,
+        "width": 7,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Température radiateur",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 920,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "fe386e130c37503e",
+        "type": "ui_gauge",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "group": "4155abb4db814fba",
+        "order": 35,
+        "width": 7,
+        "height": 6,
+        "gtype": "gage",
+        "title": "GridPower",
+        "label": "Watts",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 890,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "2b8e8c924dcdd62a",
+        "type": "ui_gauge",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "group": "4155abb4db814fba",
+        "order": 9,
+        "width": 7,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Tension batterie",
+        "label": "Volts",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 900,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "ae09078628ed38c4",
+        "type": "ui_gauge",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "group": "4155abb4db814fba",
+        "order": 33,
+        "width": 7,
+        "height": 6,
+        "gtype": "wave",
+        "title": "Battery power",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 900,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "3f445b1c4dc79fcf",
+        "type": "ui_gauge",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "group": "4155abb4db814fba",
+        "order": 5,
+        "width": 7,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Température extérieur",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 920,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "0f5e8be4cf6c6734",
+        "type": "ui_text",
+        "z": "5dd65b92bb6f40a9",
+        "group": "4155abb4db814fba",
+        "order": 2,
+        "width": 10,
+        "height": 1,
+        "name": "",
+        "label": "",
+        "format": "<font color=orange><font size =6>{{msg.payload}}",
+        "layout": "row-center",
+        "x": 970,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "375bdde0d37f522f",
+        "type": "function",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "func": "var now = new Date()\nvar heure   = now.getHours();\n\nconsoFR = Math.round(Math.random()*50000);\nbat_power=msg.payload\n\nif (heure>2 && heure < 60)\n{\n    if( bat_power< 40 && consoFR<40000)\n    {\n        msg.payload = \"Charge activée\";\n    }\n    else\n    {\n        msg.payload = \"Charge désactivée\";\n    }\n}\nelse\n{\n    msg.payload = \"Charge désactivée\"\n}\n\nreturn msg;\n\n\n//<font color=orange><font size =8>",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 120,
+        "wires": [
+            [
+                "0f5e8be4cf6c6734",
+                "342388a99ff4d1ce"
+            ]
+        ]
+    },
+    {
+        "id": "342388a99ff4d1ce",
+        "type": "debug",
+        "z": "5dd65b92bb6f40a9",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "4155abb4db814fba",
+        "type": "ui_group",
+        "name": "Radiateur AIP",
+        "tab": "89f67bc468a90bc7",
+        "order": 2,
+        "disp": true,
+        "width": 29,
+        "collapse": false
+    },
+    {
+        "id": "89f67bc468a90bc7",
+        "type": "ui_tab",
+        "name": "Smart Heater",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
